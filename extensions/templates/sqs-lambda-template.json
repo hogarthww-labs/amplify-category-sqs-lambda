@@ -1,0 +1,111 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Resources": {
+        "LambdaExecutionRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": [
+                                    "lambda.amazonaws.com"
+                                ]
+                            },
+                            "Action": [
+                                "sts:AssumeRole"
+                            ]
+                        }
+                    ]
+                },
+                "Policies": [
+                    {
+                        "PolicyName": "allowLambdaLogs",
+                        "PolicyDocument": {
+                            "Version": "2012-10-17",
+                            "Statement": [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "logs:*"
+                                    ],
+                                    "Resource": "arn:aws:logs:*:*:*"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "PolicyName": "allowSqs",
+                        "PolicyDocument": {
+                            "Version": "2012-10-17",
+                            "Statement": [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "sqs:ReceiveMessage",
+                                        "sqs:DeleteMessage",
+                                        "sqs:GetQueueAttributes",
+                                        "sqs:ChangeMessageVisibility"
+                                    ],
+                                    "Resource": {
+                                        "Fn::GetAtt": [
+                                            "<sqs-name>",
+                                            "Arn"
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "<lambda-name>": {
+          "Type": "AWS::Lambda::Function",
+          "Metadata": {
+              "aws:asset:path": "./src",
+              "aws:asset:property": "Code"
+          },
+          "Properties": {
+              "Handler": "index.handler",
+              "Role": {
+                  "Fn::GetAtt": [
+                      "LambdaExecutionRole",
+                      "Arn"
+                  ]
+              },
+              "Runtime": "nodejs12.x",
+              "Timeout": 60,
+              "MemorySize": 512
+            }
+        },
+        "LambdaFunctionEventSourceMapping": {
+            "Type": "AWS::Lambda::EventSourceMapping",
+            "Properties": {
+                "BatchSize": 10,
+                "Enabled": true,
+                "EventSourceArn": {
+                    "Fn::GetAtt": [
+                        "<sqs-name>",
+                        "Arn"
+                    ]
+                },
+                "FunctionName": {
+                    "Fn::GetAtt": [
+                        "<lambda-name>",
+                        "Arn"
+                    ]
+                }
+            }
+        },
+        "<sqs-name>": {
+            "Type": "AWS::SQS::Queue",
+            "Properties": {
+                "DelaySeconds": 0,
+                "VisibilityTimeout": 120
+            }
+        }
+    }
+  }

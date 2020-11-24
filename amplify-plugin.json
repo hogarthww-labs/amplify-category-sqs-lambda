@@ -1,0 +1,9 @@
+{
+    "name": "sqs-function",
+    "type": "function",
+    "commands": [
+        "add",
+        "help",
+        "remove"
+    ]
+}
