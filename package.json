@@ -1,14 +1,14 @@
 {
-  "name": "amplify-sqs-function-template",
+  "name": "amplify-category-sqs-lambda",
   "version": "1.1.0",
-  "description": "Deploy your own SQS triggered function resources",
+  "description": "Deploy your own SQS triggered lambda function resources",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kristianmandrup/amplify-sqs-function-template.git"
+    "url": "git+https://github.com/hogarthww-labs/amplify-category-sqs-lambda.git"
   },
   "keywords": [
     "amplify",
@@ -19,9 +19,9 @@
   "author": "Kristian Mandrup",
   "license": "Apache 2.0",
   "bugs": {
-    "url": "https://github.com/kristianmandrup/amplify-sqs-function-template/issues"
+    "url": "https://github.com/hogarthww-labs/amplify-category-sqs-lambda/issues"
   },
-  "homepage": "https://github.com/kristianmandrup/amplify-sqs-function-template#readme",
+  "homepage": "https://github.com/hogarthww-labs/amplify-category-sqs-lambda#readme",
   "dependencies": {
     "inquirer": "^7.3.3",
     "mime-types": "^2.1.27",
