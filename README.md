@@ -1,11 +1,11 @@
-# Amplify SQS Template
+# Amplify SQS lambda trigger Template
 <p>
   <a href="https://www.npmjs.com/package/amplify-sqs-lambda-template">
       <img src="https://img.shields.io/npm/v/amplify-sqs-lambda-template.svg" />
   </a>
 </p>
 
-An easy way to add CloudFormation SQS templates to your Amplify Project
+An easy way to add CloudFormation SQS lambda trigger templates to your Amplify Project
 
 ## Installation
 
