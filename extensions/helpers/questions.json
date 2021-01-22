@@ -22,6 +22,30 @@
                 "required": true
             },
             {
+                "key": "runtime",
+                "question": "Select the runtime for the lambda:",
+                "type":"list",
+                "options": [
+                    {
+                        "name": "NodeJS",
+                        "value": "nodejs12.x"
+                    },
+                    {
+                        "name": "Python 3.8",
+                        "value": "python3.8"
+                    },
+                    {
+                        "name": "Python 3.7",
+                        "value": "python3.7"
+                    },
+                    {
+                        "name": "Python 2.7",
+                        "value": "python2.7"
+                    }
+                ],                
+                "required": true
+            },            
+            {
                 "key": "nestedTemplate",
                 "question": "Is this a nested template?",
                 "type":"list",
