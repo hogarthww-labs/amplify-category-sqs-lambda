@@ -31,8 +31,16 @@
                         "value": "nodejs12.x"
                     },
                     {
-                        "name": "Python",
-                        "value": "python3.x"
+                        "name": "Python 3.8",
+                        "value": "python3.8"
+                    },
+                    {
+                        "name": "Python 3.7",
+                        "value": "python3.7"
+                    },
+                    {
+                        "name": "Python 2.7",
+                        "value": "python2.7"
                     }
                 ],                
                 "required": true
