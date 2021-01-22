@@ -43,6 +43,7 @@ async function prepareCloudFormation(context, props){
 function replaceTemplateName(rootTemplate, props) {
     rootTemplate = rootTemplate.replace('<sqs-name>', props.sqsName)
     rootTemplate = rootTemplate.replace('<lambda-name>', props.projectName.toUpperCase())
+    rootTemplate = rootTemplate.replace('<runtime>', props.runtime)
     return rootTemplate    
 }
 

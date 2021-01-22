@@ -22,6 +22,22 @@
                 "required": true
             },
             {
+                "key": "runtime",
+                "question": "Select the runtime for the lambda:",
+                "type":"list",
+                "options": [
+                    {
+                        "name": "NodeJS",
+                        "value": "nodejs12.x"
+                    },
+                    {
+                        "name": "Python",
+                        "value": "python3.x"
+                    }
+                ],                
+                "required": true
+            },            
+            {
                 "key": "nestedTemplate",
                 "question": "Is this a nested template?",
                 "type":"list",
