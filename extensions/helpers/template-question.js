@@ -19,21 +19,31 @@ async function getSQSName(context){
     return resource.name;
 }
 
-async function getLambdaName(context){
+async function getLambdaDetails(context){
     const { amplify } = context;
     const inputs = questions.template.inputs;
-    const nameLambda = [
+    const lambdaQuestions = [
         {
           type: inputs[1].type,
           name: inputs[1].key,
           message: inputs[1].question,
           validate: amplify.inputValidation(inputs[1]),
           default: amplify.getProjectDetails().projectConfig.projectName,
+    }, {
+        type: inputs[2].type,
+        name: inputs[2].key,
+        message: inputs[2].question,
+        validate: amplify.inputValidation(inputs[2]),
+        default: 'nodejs12.x'
+    },{
+        type: inputs[3].type,
+        name: inputs[3].key,
+        message: inputs[3].question,
+        validate: amplify.inputValidation(inputs[3]),
+        default: 60
     }];
 
-    let resource = await inquirer.prompt(nameLambda);
-
-    return resource.name;
+    return await inquirer.prompt(lambdaQuestions);
 }
 
 async function askLocationQuestions(){
@@ -133,7 +143,8 @@ async function generateQuestions(context, rootTemplate){
 }
 
 module.exports = {
-    getProjectName,
+    getSQSName,
+    getLambdaDetails,
     generateQuestions,
     askLocationQuestions
 }

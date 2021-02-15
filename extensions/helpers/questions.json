@@ -1,52 +1,59 @@
 {
-    "template": {
-        "inputs": [
-            {
-                "key": "name",
-                "question": "Provide a friendly name for your SQS resource to be used as a label in the project:",
-                "validation": {
-                    "operator": "regex",
-                    "value": "^[a-zA-Z0-9]+$",
-                    "onErrorMsg": "Resource name should be alphanumeric"
-                },
-                "required": true
-            },
-            {
-                "key": "lambda",
-                "question": "Provide a friendly name for your Lambda resource to be used as a label in the project:",
-                "validation": {
-                    "operator": "regex",
-                    "value": "^[a-zA-Z0-9]+$",
-                    "onErrorMsg": "Resource name should be alphanumeric"
-                },
-                "required": true
-            },
-            {
-                "key": "nestedTemplate",
-                "question": "Is this a nested template?",
-                "type":"list",
-                "options": [
-                    {
-                        "name": "Yes",
-                        "value": "YES"
-                    },
-                    {
-                        "name": "No",
-                        "value": "NO"
-                    }
-                ],
-                "required": true
-            },
-            {
-                "key": "folderLocation",
-                "question": "Path to supporting templates (templates that are referenced in the SQS template)",
-                "validation": {
-                    "operator": "regex",
-                    "value": "^(.)*$",
-                    "onErrorMsg": "This should be a valid path"
-                },
-                "required": true
-            }
-        ]
-    }
+  "template": {
+    "inputs": [
+      {
+        "key": "name",
+        "question": "Provide a friendly name for your SQS resource to be used as a label in the project:",
+        "validation": {
+          "operator": "regex",
+          "value": "^[a-zA-Z0-9]+$",
+          "onErrorMsg": "Resource name should be alphanumeric"
+        },
+        "required": true
+      },
+      {
+        "key": "lambda",
+        "question": "Provide a friendly name for your Lambda resource to be used as a label in the project:",
+        "validation": {
+          "operator": "regex",
+          "value": "^[a-zA-Z0-9]+$",
+          "onErrorMsg": "Resource name should be alphanumeric"
+        },
+        "required": true
+      },
+      {
+        "type": "number",
+        "key": "timeout",
+        "question": "What should be the timeout in secs for the Lambda resource:",
+        "required": true,
+        "default": 60
+      },
+      {
+        "key": "nestedTemplate",
+        "question": "Is this a nested template?",
+        "type": "list",
+        "options": [
+          {
+            "name": "Yes",
+            "value": "YES"
+          },
+          {
+            "name": "No",
+            "value": "NO"
+          }
+        ],
+        "required": true
+      },
+      {
+        "key": "folderLocation",
+        "question": "Path to supporting templates (templates that are referenced in the SQS template)",
+        "validation": {
+          "operator": "regex",
+          "value": "^(.)*$",
+          "onErrorMsg": "This should be a valid path"
+        },
+        "required": true
+      }
+    ]
+  }
 }

@@ -16,14 +16,16 @@ async function createTemplate(context){
         providerPlugin: 'awscloudformation',
     };
 
-    let lambdaName = await getLambdaName(context);
+    let lambdaDetails = await getLambdaDetails(context);
     let sqsName = await getSQSName(context);    
     let props = await askLocationQuestions();
-    props.lambdaName = lambdaName;
-    props.sqsName = sqsName;
-    props.options = options;
-    props.root = path.join(__dirname, 'templates/sqs-lambda-template.json')
-    prepareCloudFormation(context,props);
+    props = {
+        ...lambdaDetails,
+        sqsName,
+        options,
+        root: path.join(__dirname, 'templates/sqs-lambda-template.json.ejs')
+    }.
+    prepareCloudFormation(context, props);
 }
 
 async function prepareCloudFormation(context, props){
