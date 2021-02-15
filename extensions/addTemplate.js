@@ -118,6 +118,5 @@ async function stageRoot(context, props){
             fs.copyFileSync(`${props.nestedFolder}/${filePath}`, `${targetDir}/function/${props.lambdaName}/src/${filePath}`);
         });
         copyFilesToS3(context, props.options, props)
-      }
-      
+      }      
 }
