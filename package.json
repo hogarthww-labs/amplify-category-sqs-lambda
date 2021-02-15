@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/hogarthww-labs/amplify-category-sqs-lambda#readme",
   "dependencies": {
+    "ejs": "^3.1.5",
     "inquirer": "^7.3.3",
     "mime-types": "^2.1.27",
     "path": "^0.12.7",

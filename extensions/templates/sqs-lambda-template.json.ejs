@@ -51,7 +51,7 @@
                                     ],
                                     "Resource": {
                                         "Fn::GetAtt": [
-                                            "<sqs-name>",
+                                            "<%= sqsName %>",
                                             "Arn"
                                         ]
                                     }
@@ -62,7 +62,7 @@
                 ]
             }
         },
-        "<lambda-name>": {
+        "<%= lambdaName %>": {
           "Type": "AWS::Lambda::Function",
           "Metadata": {
               "aws:asset:path": "./src",
@@ -88,19 +88,19 @@
                 "Enabled": true,
                 "EventSourceArn": {
                     "Fn::GetAtt": [
-                        "<sqs-name>",
+                        "<%= sqsName %>",
                         "Arn"
                     ]
                 },
                 "FunctionName": {
                     "Fn::GetAtt": [
-                        "<lambda-name>",
+                        "<%= lambdaName %>",
                         "Arn"
                     ]
                 }
             }
         },
-        "<sqs-name>": {
+        "<%= sqsName %>": {
             "Type": "AWS::SQS::Queue",
             "Properties": {
                 "DelaySeconds": 0,
