@@ -32,9 +32,10 @@ async function prepareCloudFormation(context, props){
     let split = props.root.split('.');
     let ending = split[split.length-1];
     props.ending = ending
-    if (ending.toLowerCase() === 'json'){
+    const endStr = ending.toLowerCase()
+    if (endStr.includes('json')) {
         await handleJSON(context, props);
-    } else if (ending.toLowerCase() === 'yaml' || ending.toLowerCase() === 'yml'){
+    } else if (endStr.includes('yaml') || endStr.includes('yml')){
         await handleYAML(context, props);
     } else {
         console.log('Error! Can\'t find ending');
