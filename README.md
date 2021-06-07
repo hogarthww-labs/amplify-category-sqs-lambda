@@ -14,7 +14,13 @@ This plugin assumes that the Amplify CLI is already installed. For installation 
 
 To install, simply enter the following command in your terminal:
 
-`npm i -g amplify-sqs-lambda-template`
+`npm i -g hogarthww-labs/amplify-sqs-lambda-template` (install directly from this repo)
+
+`npm i -g amplify-sqs-lambda-template` (in the future when deployed to npm registry)
+
+## Important
+
+This plugin has not been tested. Use as a blueprint/template.
 
 ## Usage
 
